@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb5vbr7x2rbu7"]
+
+[ext_resource type="Texture2D" uid="uid://b8xbik6r41ar1" path="res://art/фото для фона и игры/меню уровней1.png" id="1_jashx"]
+[ext_resource type="Texture2D" uid="uid://dxv2lt5eecsbm" path="res://art/фото для фона и игры/ajylzk ehjdyz d vty..png" id="2_ie03e"]
+[ext_resource type="Script" path="res://кнопка уровня.gd" id="3_mxmsx"]
+[ext_resource type="Texture2D" uid="uid://k7mlpr0101vi" path="res://art/фото для фона и игры/черепаха.png" id="4_oo7be"]
+[ext_resource type="Texture2D" uid="uid://be1jyyh6rmhnu" path="res://art/фото для фона и игры/заяц.png" id="5_dapla"]
+
+[node name="меню уровней" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -4.0
+offset_right = 1425.0
+offset_bottom = 803.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_jashx")
+
+[node name="2 уровень" type="TouchScreenButton" parent="Control/TextureRect"]
+position = Vector2(535.556, 126.667)
+scale = Vector2(1.18736, 1.24495)
+texture_normal = ExtResource("2_ie03e")
+script = ExtResource("3_mxmsx")
+nextScreenName = "res://меню_животные.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TextureRect/2 уровень"]
+offset_left = 11.2293
+offset_top = 143.692
+offset_right = 951.229
+offset_bottom = 1083.69
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_oo7be")
+
+[node name="1 уровень" type="TouchScreenButton" parent="Control/TextureRect"]
+position = Vector2(112.222, 124.444)
+scale = Vector2(1.187, 1.246)
+texture_normal = ExtResource("2_ie03e")
+script = ExtResource("3_mxmsx")
+nextScreenName = "res://меню.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="Control/TextureRect/1 уровень"]
+offset_left = 31.7195
+offset_top = 93.3334
+offset_right = 795.719
+offset_bottom = 1173.33
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("5_dapla")
+
+[node name="Текст Глава1" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 132.0
+offset_right = 801.0
+offset_bottom = 235.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.752941, 1)
+theme_override_font_sizes/font_size = 35
+text = "Поиск животных
+с черепашкой"
+horizontal_alignment = 1
+
+[node name="Текст Глава2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 129.0
+offset_right = 408.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.752941, 1)
+theme_override_font_sizes/font_size = 35
+text = "Сборы в поход
+ с зайкой"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Control/TextureRect/2 уровень" to="Control/TextureRect/2 уровень" method="_on_pressed"]
+[connection signal="pressed" from="Control/TextureRect/1 уровень" to="Control/TextureRect/1 уровень" method="_on_pressed"]

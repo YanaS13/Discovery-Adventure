@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1bteltukpol3"]
+
+[ext_resource type="Texture2D" uid="uid://dah6kd4kntab" path="res://art/фото для фона и игры/фото для меню уровней.png" id="1_8vfsq"]
+[ext_resource type="Texture2D" uid="uid://cy5l186wcfsco" path="res://art/фото для фона и игры/фон 3 уровень.png" id="2_d28tg"]
+[ext_resource type="Script" path="res://кнопка уровня.gd" id="3_ycdci"]
+[ext_resource type="Texture2D" uid="uid://j51ei60v050i" path="res://art/фото для фона и игры/домой1.png" id="4_puv25"]
+[ext_resource type="Script" path="res://домой.gd" id="5_2ytvw"]
+
+[node name="Менюживотные" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -7.0
+offset_right = 1428.0
+offset_bottom = 796.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_8vfsq")
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 115.556
+offset_top = 256.667
+offset_right = 401.556
+offset_bottom = 476.667
+
+[node name="1 уровень" type="TouchScreenButton" parent="Control/TextureRect/ColorRect"]
+position = Vector2(9.99999, 9.99997)
+scale = Vector2(0.205983, 0.295295)
+texture_normal = ExtResource("2_d28tg")
+script = ExtResource("3_ycdci")
+nextScreenName = "res://level_3.tscn"
+numlevel = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Control/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 724.444
+offset_top = 198.889
+offset_right = 998.444
+offset_bottom = 419.889
+
+[node name="ColorRect4" type="ColorRect" parent="Control/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 1026.67
+offset_top = 196.667
+offset_right = 1314.67
+offset_bottom = 419.667
+
+[node name="Текст Глава2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 68.0
+offset_right = 368.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.752941, 1)
+theme_override_font_sizes/font_size = 49
+text = "Поиск животных"
+
+[node name="домой" type="TouchScreenButton" parent="Control"]
+position = Vector2(1086, 68.0001)
+scale = Vector2(0.481308, 0.415842)
+texture_normal = ExtResource("4_puv25")
+script = ExtResource("5_2ytvw")
+
+[connection signal="pressed" from="Control/TextureRect/ColorRect/1 уровень" to="Control/TextureRect/ColorRect/1 уровень" method="_on_pressed"]
+[connection signal="pressed" from="Control/домой" to="Control/домой" method="_on_pressed"]

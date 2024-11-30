@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=3 uid="uid://5x04a0cx745g"]
+
+[ext_resource type="Script" path="res://всплывающее_окно.gd" id="1_kxmod"]
+[ext_resource type="Texture2D" uid="uid://qhpf1uarpd5u" path="res://art/фото для фона и игры/промежуточное окно2.png" id="2_liwhf"]
+[ext_resource type="Texture2D" uid="uid://dsbnrn8i1saiu" path="res://art/фото для фона и игры/закрыть.png" id="4_88epd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ido8f"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.509804)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m01n"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.443137)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shqrf"]
+bg_color = Color(0.309804, 0.32549, 0.945098, 0.741176)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.360784)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="GDScript" id="GDScript_im21r"]
+script/source = "extends Button
+
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _on_следующий_уровень_pressed() -> void:
+	var mainScene = load(\"res://меню.tscn\")
+	get_tree().change_scene_to_packed(mainScene)
+
+func _on_pressed() -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x6k5"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.509804)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqdj2"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.443137)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er4ns"]
+bg_color = Color(0.309804, 0.32549, 0.945098, 0.741176)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.360784)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="Всплывающее окно" type="Node2D"]
+script = ExtResource("1_kxmod")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 306.0
+offset_top = 104.0
+offset_right = 803.0
+offset_bottom = 522.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 17.0
+offset_right = 794.0
+offset_bottom = 667.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_liwhf")
+
+[node name="меню" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 284.0
+offset_right = 319.0
+offset_bottom = 351.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_ido8f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3m01n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shqrf")
+text = "Меню"
+script = SubResource("GDScript_im21r")
+
+[node name="Начать заново" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 196.0
+offset_right = 374.0
+offset_bottom = 268.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_1x6k5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fqdj2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_er4ns")
+text = "Начать заново"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 101.0
+offset_right = 314.0
+offset_bottom = 177.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.306872, 0.448069, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Пауза"
+horizontal_alignment = 1
+
+[node name="Закрыть" type="TouchScreenButton" parent="Control"]
+position = Vector2(405, 41)
+scale = Vector2(0.0483333, 0.0504506)
+texture_normal = ExtResource("4_88epd")
+
+[connection signal="pressed" from="Control/меню" to="." method="_on_меню_pressed"]
+[connection signal="pressed" from="Control/меню" to="Control/меню" method="_on_pressed"]
+[connection signal="pressed" from="Control/Начать заново" to="." method="_on_начать_заново_pressed"]
+[connection signal="pressed" from="Control/Закрыть" to="." method="_on_закрыть_pressed"]

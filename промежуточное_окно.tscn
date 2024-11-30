@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://7w1r6a8hfpf4"]
+
+[ext_resource type="Script" path="res://промежуточное_окно.gd" id="1_3md0k"]
+[ext_resource type="Texture2D" uid="uid://qhpf1uarpd5u" path="res://art/фото для фона и игры/промежуточное окно2.png" id="2_mypmm"]
+[ext_resource type="AudioStream" uid="uid://dovf2jipklu6l" path="res://sounds/прохождение уровня.mp3" id="4_wkari"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31qlp"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.509804)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bu7n"]
+bg_color = Color(0.137255, 0.517647, 0.698039, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.443137)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctufn"]
+bg_color = Color(0.309804, 0.32549, 0.945098, 0.741176)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.360784)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="GDScript" id="GDScript_im21r"]
+script/source = "extends Button
+
+func _ready() -> void:
+	pass
+
+func _on_следующий_уровень_pressed() -> void:
+	var mainScene = load(\"res://меню.tscn\")
+	get_tree().change_scene_to_packed(mainScene)
+
+func _on_pressed() -> void:
+	pass
+"
+
+[node name="промежуточное окно" type="Node2D"]
+script = ExtResource("1_3md0k")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 408.0
+offset_top = 133.0
+offset_right = 892.0
+offset_bottom = 551.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 786.0
+offset_bottom = 659.0
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_mypmm")
+
+[node name="меню" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 275.0
+offset_right = 310.0
+offset_bottom = 342.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_31qlp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4bu7n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctufn")
+text = "Меню"
+script = SubResource("GDScript_im21r")
+
+[node name="следующий_уровень" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 180.0
+offset_right = 391.0
+offset_bottom = 252.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_31qlp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4bu7n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctufn")
+text = "Следующий уровень"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 95.0
+offset_right = 379.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(0.306872, 0.448069, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Ты справился!"
+
+[node name="Уровень пройден" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(-390, -121)
+stream = ExtResource("4_wkari")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Control/меню" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/меню" to="Control/меню" method="_on_pressed"]
+[connection signal="pressed" from="Control/следующий_уровень" to="." method="_on_следующий_уровень_pressed"]

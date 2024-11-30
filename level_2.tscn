@@ -1,0 +1,647 @@
+[gd_scene load_steps=40 format=3 uid="uid://bkf7x0wirrv5w"]
+
+[ext_resource type="Script" path="res://level_2.gd" id="1_5fap3"]
+[ext_resource type="Texture2D" uid="uid://dm50w0somuujr" path="res://art/фото для фона и игры/уровень2 фон.png" id="1_8h8o5"]
+[ext_resource type="Texture2D" uid="uid://be1jyyh6rmhnu" path="res://art/фото для фона и игры/заяц.png" id="3_ptnxn"]
+[ext_resource type="Texture2D" uid="uid://b7qe5wuyk8wf" path="res://art/фото для фона и игры/2уровень/гриб.png" id="4_nfc0c"]
+[ext_resource type="Texture2D" uid="uid://du1pkrog234f3" path="res://art/фото для фона и игры/мысль2.11.png" id="4_rguxa"]
+[ext_resource type="Texture2D" uid="uid://diruw7bx62nvl" path="res://art/фото для фона и игры/мысль3.2.png" id="5_bchyh"]
+[ext_resource type="Script" path="res://screen_button.gd" id="5_gifmc"]
+[ext_resource type="Texture2D" uid="uid://s1dwthuq3mh0" path="res://art/фото для фона и игры/2уровень/брюки.png" id="7_3svrx"]
+[ext_resource type="Script" path="res://touch_screen_button.gd" id="8_fwy3o"]
+[ext_resource type="Texture2D" uid="uid://c2ognf4uvwqu7" path="res://art/фото для фона и игры/2уровень/телефон.png" id="9_muuxf"]
+[ext_resource type="Texture2D" uid="uid://cidjhui48w2fj" path="res://art/фото для фона и игры/2уровень/кукла.png" id="10_kssle"]
+[ext_resource type="Texture2D" uid="uid://bxmhisgq4pi8y" path="res://art/фото для фона и игры/2уровень/книга1.png" id="11_qreif"]
+[ext_resource type="Texture2D" uid="uid://b7agmg7h1arw6" path="res://art/фото для фона и игры/2уровень/кепка.png" id="12_tpjk8"]
+[ext_resource type="FontFile" uid="uid://dqxwu1w1r1xh5" path="res://fonts/diffusion-light.ttf" id="13_0p6w5"]
+[ext_resource type="Script" path="res://label.gd" id="14_upqrh"]
+[ext_resource type="AudioStream" uid="uid://cce1xg1gcd1m5" path="res://sounds/песня правильного ответа.mp3" id="15_7khk6"]
+[ext_resource type="AudioStream" uid="uid://boeqcu3oenclt" path="res://sounds/неверно.mp3" id="15_cm2wc"]
+[ext_resource type="Script" path="res://пауза.gd" id="17_2prmp"]
+[ext_resource type="Texture2D" uid="uid://iiu375eayiku" path="res://art/фото для фона и игры/2уровень/мяч.png" id="18_xadbn"]
+[ext_resource type="Texture2D" uid="uid://b3lx7yrbxb4r0" path="res://art/фото для фона и игры/2уровень/машина1.png" id="19_2xuak"]
+[ext_resource type="Texture2D" uid="uid://1enqas2t4x0x" path="res://art/фото для фона и игры/2уровень/носки.png" id="19_iy800"]
+[ext_resource type="Texture2D" uid="uid://58oarm858rwx" path="res://art/фото для фона и игры/2уровень/ракета.png" id="20_so4rb"]
+[ext_resource type="PackedScene" uid="uid://7w1r6a8hfpf4" path="res://промежуточное_окно.tscn" id="22_d170x"]
+[ext_resource type="Texture2D" uid="uid://b1786xu4673sm" path="res://art/фото для фона и игры/2уровень/цветок.png" id="22_xjoka"]
+[ext_resource type="Texture2D" uid="uid://dssnmjjvqlliu" path="res://art/фото для фона и игры/2уровень/кубики.png" id="23_4k4hm"]
+[ext_resource type="Texture2D" uid="uid://bw3vdj0qypt3m" path="res://art/фото для фона и игры/2уровень/футболка.png" id="23_rkqpy"]
+[ext_resource type="Texture2D" uid="uid://bbaas0r2khvht" path="res://art/фото для фона и игры/2уровень/куртка.png" id="24_6ru1n"]
+[ext_resource type="Texture2D" uid="uid://bfbbe6ujl0vh2" path="res://art/фото для фона и игры/2уровень/чашка.png" id="25_wop8u"]
+[ext_resource type="Texture2D" uid="uid://c27d5pw0b8sf2" path="res://art/фото для фона и игры/2уровень/овца.png" id="26_dha5g"]
+[ext_resource type="Texture2D" uid="uid://cgogivk5cxrqh" path="res://art/фото для фона и игры/2уровень/ножницы.png" id="26_jlmiw"]
+[ext_resource type="Texture2D" uid="uid://dqljib17dtxb8" path="res://art/фото для фона и игры/2уровень/шорты.png" id="28_lyync"]
+[ext_resource type="Texture2D" uid="uid://d3njycpcm5ni6" path="res://art/фото для фона и игры/пауза.png" id="29_dsbu4"]
+[ext_resource type="PackedScene" uid="uid://5x04a0cx745g" path="res://всплывающее_окно.tscn" id="30_1yvwy"]
+[ext_resource type="Texture2D" uid="uid://cpxrb014h83b3" path="res://art/фото для фона и игры/подсказка.png" id="32_2ikxh"]
+[ext_resource type="Script" path="res://подсказка.gd" id="32_ud8e4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lk5v3"]
+radius = 336.0
+height = 1088.0
+
+[sub_resource type="GDScript" id="GDScript_m4nbu"]
+script/source = "extends Control
+
+func _next_part_level():
+	if get_node(\"TextureRect/rect12/арбуз_button\").is_pressed == true:
+		var mainScene = load(\"res://главный_экран.gd\")
+		get_tree().change_scene_to_packed(mainScene)
+"
+
+[sub_resource type="GDScript" id="GDScript_ffc4q"]
+script/source = "extends ColorRect
+
+
+
+#func _on_input_event(event):
+#	if event is InputEventScreenTouch:
+#		if event.is_action_released(\"ui_touch\"):
+			# Скрыть спрайт
+#			self.visible = false
+			
+	#if Input.is_action_just_pressed(\"ui_touch\"):
+	#	self.queue_free()
+
+#func _on_button_pressed() -> void:
+#	self.visible = false
+
+
+func _on_texture_button_toggled(toggled_on: bool) -> void:
+	pass # Replace with function body.
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_glj4g"]
+font_size = 105
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[node name="level_2" type="Node2D"]
+script = ExtResource("1_5fap3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 1427.0
+offset_bottom = 805.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_8h8o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(155, 529)
+scale = Vector2(0.374346, 0.343056)
+texture = ExtResource("3_ptnxn")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+visible = false
+shape = SubResource("CapsuleShape2D_lk5v3")
+
+[node name="Мысль-облако" type="Sprite2D" parent="."]
+position = Vector2(320, 290)
+scale = Vector2(0.227734, 0.231618)
+texture = ExtResource("4_rguxa")
+
+[node name="Мысль кончик" type="Sprite2D" parent="."]
+position = Vector2(294, 456)
+scale = Vector2(0.337209, 0.383871)
+texture = ExtResource("5_bchyh")
+
+[node name="полка" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="полка"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 66.0
+offset_right = 778.0
+offset_bottom = 580.0
+script = SubResource("GDScript_m4nbu")
+
+[node name="TextureRect" type="ColorRect" parent="полка/Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 73.0
+offset_right = 1085.0
+offset_bottom = 525.0
+scale = Vector2(1.0019, 1)
+color = Color(0.733333, 0.345098, 0.168627, 0.501961)
+
+[node name="rect11" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 26.0
+offset_right = 219.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="гриб_screen_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect11"]
+position = Vector2(12.9203, 4)
+scale = Vector2(0.26824, 0.22293)
+texture_normal = ExtResource("4_nfc0c")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 1
+
+[node name="rect14" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 29.943
+offset_top = 246.0
+offset_right = 219.943
+offset_bottom = 426.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+script = SubResource("GDScript_ffc4q")
+
+[node name="штаны_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect14"]
+position = Vector2(2.99443, 6)
+scale = Vector2(0.178538, 0.130112)
+texture_normal = ExtResource("7_3svrx")
+shape_visible = false
+passby_press = true
+action = "ui_touch"
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="rect13" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 26.0
+offset_right = 657.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="телефон_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect13"]
+position = Vector2(0.112522, 10)
+scale = Vector2(0.302996, 0.247496)
+texture_normal = ExtResource("9_muuxf")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 1
+
+[node name="rect12" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 26.0
+offset_right = 437.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="кукла_screen_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect12"]
+position = Vector2(12.507, 1)
+scale = Vector2(0.291699, 0.2175)
+texture_normal = ExtResource("10_kssle")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 1
+
+[node name="rect15" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 246.0
+offset_right = 437.0
+offset_bottom = 426.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="книга_screen_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect15"]
+position = Vector2(2.526, 1.99999)
+scale = Vector2(0.0468487, 0.0838863)
+texture_normal = ExtResource("11_qreif")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 1
+
+[node name="rect16" type="ColorRect" parent="полка/Control/TextureRect"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 246.0
+offset_right = 657.0
+offset_bottom = 426.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="кепка_button" type="TouchScreenButton" parent="полка/Control/TextureRect/rect16"]
+position = Vector2(5.10302, 17)
+scale = Vector2(0.126316, 0.141403)
+texture_normal = ExtResource("12_tpjk8")
+passby_press = true
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="Label1" type="Label" parent="полка/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 142.0
+offset_top = 163.0
+offset_right = 249.0
+offset_bottom = 232.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("13_0p6w5")
+theme_override_font_sizes/font_size = 14
+text = "Найди предметы одежды для похода"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("14_upqrh")
+level_number = 2
+
+[node name="Timer" type="Timer" parent="полка/Control"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Звук правильного ответа" type="AudioStreamPlayer2D" parent="полка"]
+stream = ExtResource("15_7khk6")
+
+[node name="Не правильно" type="AudioStreamPlayer2D" parent="полка"]
+stream = ExtResource("15_cm2wc")
+
+[node name="полка2" type="Node2D" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="полка2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 66.0
+offset_right = 778.0
+offset_bottom = 580.0
+script = SubResource("GDScript_m4nbu")
+
+[node name="TextureRect" type="ColorRect" parent="полка2/Control"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 73.0
+offset_right = 1086.0
+offset_bottom = 525.0
+scale = Vector2(1.0019, 1)
+color = Color(0.733333, 0.345098, 0.168627, 0.501961)
+
+[node name="rect16" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 467.112
+offset_top = 246.0
+offset_right = 657.112
+offset_bottom = 426.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="мяч_screen_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect16"]
+position = Vector2(2.9943, 5)
+scale = Vector2(0.111836, 0.102703)
+texture_normal = ExtResource("18_xadbn")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 2
+
+[node name="rect15" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 245.534
+offset_top = 247.0
+offset_right = 435.534
+offset_bottom = 427.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+script = SubResource("GDScript_ffc4q")
+
+[node name="носки_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect15"]
+position = Vector2(0.998134, 1.00001)
+scale = Vector2(0.100235, 0.0947917)
+texture_normal = ExtResource("19_iy800")
+shape_visible = false
+passby_press = true
+action = "ui_touch"
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="rect13" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 26.0
+offset_right = 657.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="ракета_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect13"]
+position = Vector2(4.10493, -9.53674e-07)
+scale = Vector2(0.0756895, 0.0774586)
+texture_normal = ExtResource("20_so4rb")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 2
+
+[node name="rect12" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 26.0
+offset_right = 437.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="машина_screen_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect12"]
+position = Vector2(2.52591, 16)
+scale = Vector2(0.108147, 0.122867)
+texture_normal = ExtResource("19_2xuak")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 2
+
+[node name="rect14" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 28.945
+offset_top = 244.0
+offset_right = 218.945
+offset_bottom = 424.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="цветок_screen_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect14"]
+position = Vector2(4.99052, 0)
+scale = Vector2(0.113311, 0.0903614)
+texture_normal = ExtResource("22_xjoka")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 2
+
+[node name="rect11" type="ColorRect" parent="полка2/Control/TextureRect"]
+layout_mode = 0
+offset_left = 29.9431
+offset_top = 27.0
+offset_right = 219.943
+offset_bottom = 207.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="футболка_button" type="TouchScreenButton" parent="полка2/Control/TextureRect/rect11"]
+position = Vector2(0.998064, 5)
+scale = Vector2(0.194828, 0.187978)
+texture_normal = ExtResource("23_rkqpy")
+passby_press = true
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="Label1" type="Label" parent="полка2/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 147.0
+offset_top = 164.0
+offset_right = 254.0
+offset_bottom = 233.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("13_0p6w5")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("14_upqrh")
+level_number = 2
+
+[node name="Timer" type="Timer" parent="полка2/Control"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Звук правильного ответа" type="AudioStreamPlayer2D" parent="полка2"]
+stream = ExtResource("15_7khk6")
+
+[node name="Не правильно" type="AudioStreamPlayer2D" parent="полка2"]
+stream = ExtResource("15_cm2wc")
+
+[node name="полка3" type="Node2D" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="полка3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 66.0
+offset_right = 778.0
+offset_bottom = 580.0
+script = SubResource("GDScript_m4nbu")
+
+[node name="TextureRect" type="ColorRect" parent="полка3/Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 73.0
+offset_right = 1085.0
+offset_bottom = 525.0
+scale = Vector2(1.0019, 1)
+color = Color(0.733333, 0.345098, 0.168627, 0.501961)
+
+[node name="rect11" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 26.0
+offset_right = 219.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="кубики_screen_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect11"]
+position = Vector2(-0.0550508, 4)
+scale = Vector2(0.118971, 0.138015)
+texture_normal = ExtResource("23_4k4hm")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 3
+
+[node name="rect14" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 29.943
+offset_top = 246.0
+offset_right = 219.943
+offset_bottom = 426.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+script = SubResource("GDScript_ffc4q")
+
+[node name="куртка_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect14"]
+position = Vector2(2.99443, 6)
+scale = Vector2(0.108884, 0.0890625)
+texture_normal = ExtResource("24_6ru1n")
+shape_visible = false
+passby_press = true
+action = "ui_touch"
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="rect13" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 26.0
+offset_right = 657.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="телефон_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect13"]
+position = Vector2(8.09734, 23)
+scale = Vector2(0.0301839, 0.0431894)
+texture_normal = ExtResource("25_wop8u")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 3
+
+[node name="rect12" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 26.0
+offset_right = 437.0
+offset_bottom = 206.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="ножницы_screen_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect12"]
+position = Vector2(3.52401, 1)
+scale = Vector2(0.120136, 0.174294)
+texture_normal = ExtResource("26_jlmiw")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 3
+
+[node name="rect16" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 468.111
+offset_top = 245.0
+offset_right = 658.111
+offset_bottom = 425.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="овечка_screen_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect16"]
+position = Vector2(1.99585, 2.99999)
+scale = Vector2(0.136138, 0.126791)
+texture_normal = ExtResource("26_dha5g")
+script = ExtResource("5_gifmc")
+level_number = 2
+level_part = 3
+
+[node name="rect15" type="ColorRect" parent="полка3/Control/TextureRect"]
+layout_mode = 0
+offset_left = 247.53
+offset_top = 249.0
+offset_right = 437.53
+offset_bottom = 429.0
+color = Color(0.984314, 0.941176, 0.905882, 1)
+
+[node name="шорты_button" type="TouchScreenButton" parent="полка3/Control/TextureRect/rect15"]
+position = Vector2(-2.99442, 1.00001)
+scale = Vector2(0.349794, 0.380851)
+texture_normal = ExtResource("28_lyync")
+passby_press = true
+script = ExtResource("8_fwy3o")
+level_number = 2
+
+[node name="Label1" type="Label" parent="полка3/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 151.0
+offset_top = 161.0
+offset_right = 258.0
+offset_bottom = 230.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("13_0p6w5")
+theme_override_font_sizes/font_size = 14
+text = "Найди предметы одежды"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("14_upqrh")
+level_number = 2
+
+[node name="Timer" type="Timer" parent="полка3/Control"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Звук правильного ответа" type="AudioStreamPlayer2D" parent="полка3"]
+stream = ExtResource("15_7khk6")
+
+[node name="Не правильно" type="AudioStreamPlayer2D" parent="полка3"]
+stream = ExtResource("15_cm2wc")
+
+[node name="промежуточное окно" parent="." instance=ExtResource("22_d170x")]
+visible = false
+position = Vector2(-2, 26)
+
+[node name="Всплывающее окно" parent="." instance=ExtResource("30_1yvwy")]
+visible = false
+position = Vector2(97, 40)
+
+[node name="Пауза" type="TouchScreenButton" parent="."]
+position = Vector2(13, 16)
+scale = Vector2(0.205036, 0.22314)
+texture_normal = ExtResource("29_dsbu4")
+script = ExtResource("17_2prmp")
+num = "../полка3/Control"
+level = "2"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="подсказкафон" type="TextureRect" parent="."]
+visible = false
+offset_left = 348.0
+offset_top = 609.0
+offset_right = 3248.0
+offset_bottom = 959.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("32_2ikxh")
+
+[node name="Подсказка" type="Label" parent="подсказкафон"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 80.0
+offset_right = 2808.0
+offset_bottom = 280.0
+text = "Подсказка: защищает голову от солнца летом"
+label_settings = SubResource("LabelSettings_glj4g")
+script = ExtResource("32_ud8e4")
+level = 2
+
+[connection signal="pressed" from="полка/Control/TextureRect/rect11/гриб_screen_button" to="полка/Control/TextureRect/rect11/гриб_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect11/гриб_screen_button" to="полка/Control/Label1" method="_on_button_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect11/гриб_screen_button" to="полка/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect14/штаны_button" to="полка/Control/TextureRect/rect14/штаны_button" method="_on_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect13/телефон_button" to="полка/Control/TextureRect/rect13/телефон_button" method="_on_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect13/телефон_button" to="полка/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect12/кукла_screen_button" to="полка/Control/TextureRect/rect12/кукла_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect12/кукла_screen_button" to="полка/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect15/книга_screen_button" to="полка/Control/TextureRect/rect15/книга_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect15/книга_screen_button" to="полка/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка/Control/TextureRect/rect16/кепка_button" to="полка/Control/TextureRect/rect16/кепка_button" method="_on_pressed"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/TextureRect/rect11/гриб_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/TextureRect/rect14/штаны_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/TextureRect/rect12/кукла_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/TextureRect/rect15/книга_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/TextureRect/rect16/кепка_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка/Control/Timer" to="полка/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect16/мяч_screen_button" to="полка2/Control/TextureRect/rect16/мяч_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect16/мяч_screen_button" to="полка2/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect15/носки_button" to="полка2/Control/TextureRect/rect15/носки_button" method="_on_pressed"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect13/ракета_button" to="полка2/Control/TextureRect/rect13/ракета_button" method="_on_pressed"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect13/ракета_button" to="полка2/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect12/машина_screen_button" to="полка2/Control/TextureRect/rect12/машина_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect12/машина_screen_button" to="полка2/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect14/цветок_screen_button" to="полка2/Control/TextureRect/rect14/цветок_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect14/цветок_screen_button" to="полка2/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка2/Control/TextureRect/rect11/футболка_button" to="полка2/Control/TextureRect/rect11/футболка_button" method="_on_pressed"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/TextureRect/rect16/мяч_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/TextureRect/rect15/носки_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/TextureRect/rect12/машина_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/TextureRect/rect14/цветок_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/TextureRect/rect11/футболка_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка2/Control/Timer" to="полка2/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect11/кубики_screen_button" to="полка3/Control/TextureRect/rect11/кубики_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect11/кубики_screen_button" to="полка3/Control/Label1" method="_on_button_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect11/кубики_screen_button" to="полка3/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect14/куртка_button" to="полка3/Control/TextureRect/rect14/куртка_button" method="_on_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect13/телефон_button" to="полка3/Control/TextureRect/rect13/телефон_button" method="_on_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect13/телефон_button" to="полка3/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect12/ножницы_screen_button" to="полка3/Control/TextureRect/rect12/ножницы_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect12/ножницы_screen_button" to="полка3/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect16/овечка_screen_button" to="полка3/Control/TextureRect/rect16/овечка_screen_button" method="_on_pressed"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect16/овечка_screen_button" to="полка3/Control/Label1" method="update_text"]
+[connection signal="pressed" from="полка3/Control/TextureRect/rect15/шорты_button" to="полка3/Control/TextureRect/rect15/шорты_button" method="_on_pressed"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/TextureRect/rect11/кубики_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/TextureRect/rect14/куртка_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/TextureRect/rect12/ножницы_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/TextureRect/rect16/овечка_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/TextureRect/rect15/шорты_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="полка3/Control/Timer" to="полка3/Control/Label1" method="update_text"]
+[connection signal="pressed" from="Пауза" to="." method="_on_пауза_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_process"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/TextureRect/rect11/кубики_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/TextureRect/rect14/куртка_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/TextureRect/rect12/ножницы_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/TextureRect/rect16/овечка_screen_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/TextureRect/rect15/шорты_button" method="_on_TextTimer_timeout"]
+[connection signal="timeout" from="Timer" to="полка3/Control/Label1" method="update_text"]
